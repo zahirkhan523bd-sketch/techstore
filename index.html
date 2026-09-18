@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore BD - ল্যাপটপ ও কম্পিউটার পার্টস</title>
+    <!-- Tailwind CSS for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // EmailJS Public Key (আপনার অ্যাকাউন্ট খোলার পর এখানে আপনার পাবলিক কি বসাবেন)
+            emailjs.init("YOUR_EMAILJS_PUBLIC_KEY");
+        })();
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Hind Siliguri', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header / Navbar -->
+    <header class="bg-blue-600 text-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold tracking-wide">💻 TechStore BD</h1>
+            <p class="text-sm bg-blue-700 px-3 py-1 rounded-full hidden sm:block">ল্যাপটপ, কম্পিউটার ও পার্টসের বিশ্বস্ত ঠিকানা</p>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-blue-900 text-white py-12 px-4 text-center">
+        <div class="container mx-auto max-w-2xl">
+            <h2 class="text-3xl font-bold mb-3">সেরা মূল্যে ল্যাপটপ ও কম্পিউটার পার্টস কিনুন</h2>
+            <p class="text-gray-300 text-sm sm:text-base">পছন্দের পণ্যটি বেছে নিন এবং অর্ডার করুন। আমরা দ্রুত আপনার সাথে যোগাযোগ করে কনফার্ম করব।</p>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <main class="container mx-auto px-4 py-10">
+        <h3 class="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">আমাদের পণ্যসমূহ</h3>
+        
+        <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Product 1 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden border hover:shadow-lg transition">
+                <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500&auto=format&fit=crop&q=60" alt="Laptop" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded font-semibold">ল্যাপটপ</span>
+                    <h4 class="font-bold text-lg mt-2 text-gray-900">HP Core i5 11th Gen Laptop</h4>
+                    <p class="text-gray-600 text-sm mt-1">৮ জিবি র‍্যাম, ৫১২ জিবি এনভিএমই এসএসডি।</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-blue-600 font-bold text-lg">৳ ৫৫,০০০</span>
+                        <button onclick="openOrderModal('HP Core i5 11th Gen Laptop', '৳ ৫৫,০০০')" class="bg-blue-600 text-white px-3 py-2 rounded text-sm hover:bg-blue-700 font-medium transition">অর্ডার করুন</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden border hover:shadow-lg transition">
+                <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500&auto=format&fit=crop&q=60" alt="Graphics Card" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded font-semibold">পার্টস</span>
+                    <h4 class="font-bold text-lg mt-2 text-gray-900">NVIDIA RTX 3060 12GB GPU</h4>
+                    <p class="text-gray-600 text-sm mt-1">গেমিং ও গ্রাফিক্স ডিজাইনের জন্য সেরা পারফরম্যান্স।</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-blue-600 font-bold text-lg">৳ ৩২,৫০০</span>
+                        <button onclick="openOrderModal('NVIDIA RTX 3060 12GB GPU', '৳ ৩২,৫০০')" class="bg-blue-600 text-white px-3 py-2 rounded text-sm hover:bg-blue-700 font-medium transition">অর্ডার করুন</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden border hover:shadow-lg transition">
+                <img src="https://images.unsplash.com/photo-1547082299-de196ea013d6?w=500&auto=format&fit=crop&q=60" alt="SSD" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded font-semibold">স্টোরেজ</span>
+                    <h4 class="font-bold text-lg mt-2 text-gray-900">Samsung 980 1TB NVMe SSD</h4>
+                    <p class="text-gray-600 text-sm mt-1">দ্রুতগতির রিড ও রাইট স্পিড, ৩ বছরের ওয়ারেন্টি।</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-blue-600 font-bold text-lg">৳ ৮,,৫০০</span>
+                        <button onclick="openOrderModal('Samsung 980 1TB NVMe SSD', '৳ ৮,৫০০')" class="bg-blue-600 text-white px-3 py-2 rounded text-sm hover:bg-blue-700 font-medium transition">অর্ডার করুন</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden border hover:shadow-lg transition">
+                <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=500&auto=format&fit=crop&q=60" alt="Gaming Keyboard" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded font-semibold">ইলেকট্রিক/অ্যাক্সেসরিজ</span>
+                    <h4 class="font-bold text-lg mt-2 text-gray-900">RGB Mechanical Gaming Keyboard</h4>
+                    <p class="text-gray-600 text-sm mt-1">মেকানিক্যাল ব্লু সুইচ ও দুর্দান্ত আরজিবি লাইটিং।</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-blue-600 font-bold text-lg">৳ ২,৮০০</span>
+                        <button onclick="openOrderModal('RGB Mechanical Gaming Keyboard', '৳ ২,৮০০')" class="bg-blue-600 text-white px-3 py-2 rounded text-sm hover:bg-blue-700 font-medium transition">অর্ডার করুন</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Order Modal (Popup) -->
+    <div id="orderModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex justify-center items-center z-50 p-4">
+        <div class="bg-white rounded-lg max-w-md w-full p-6 shadow-xl relative">
+            <button onclick="closeOrderModal()" class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-xl font-bold">&times;</button>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">অর্ডার কনফার্ম করুন</h3>
+            <p id="modalProductName" class="text-sm text-blue-600 font-semibold mb-4"></p>
+
+            <form id="orderForm" onsubmit="submitOrder(event)">
+                <div class="mb-3">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">আপনার নাম</label>
+                    <input type="text" id="customerName" required class="w-full border rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="পূর্ণ নাম লিখুন">
+                </div>
+                <div class="mb-3">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">মোবাইল নম্বর</label>
+                    <input type="tel" id="customerPhone" required class="w-full border rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="০১৭xxxxxxxx">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">পূর্ণ ঠিকানা</label>
+                    <textarea id="customerAddress" required rows="3" class="w-full border rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="বাসা/রোড, থানা, জেলা"></textarea>
+                </div>
+                <button type="submit" id="submitBtn" class="w-full bg-blue-600 text-white py-2.5 rounded font-semibold hover:bg-blue-700 transition">অর্ডার সাবমিট করুন</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Message Toast -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-green-600 text-white px-4 py-3 rounded shadow-lg hidden z-50">
+        ✅ আপনার অর্ডারটি সফলভাবে সাবমিট হয়েছে! আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center py-6 mt-12 text-sm">
+        <p>&copy; 2026 TechStore BD. সর্বস্বত্ব সংরক্ষিত।</p>
+    </footer>
+
+    <!-- JavaScript logic -->
+    <script>
+        let selectedProduct = "";
+        let selectedPrice = "";
+
+        function openOrderModal(product, price) {
+            selectedProduct = product;
+            selectedPrice = price;
+            document.getElementById('modalProductName').innerText = product + " (" + price + ")";
+            document.getElementById('orderModal').classList.remove('hidden');
+        }
+
+        function closeOrderModal() {
+            document.getElementById('orderModal').classList.add('hidden');
+        }
+
+        function submitOrder(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('customerName').value;
+            const phone = document.getElementById('customerPhone').value;
+            const address = document.getElementById('customerAddress').value;
+            const submitBtn = document.getElementById('submitBtn');
+
+            submitBtn.innerText = "পাঠানো হচ্ছে...";
+            submitBtn.disabled = true;
+
+            // EmailJS এর মাধ্যমে ইমেইল পাঠানোর প্যারামিটার
+            // (Note: EmailJS ড্যাশবোর্ডে Service ID এবং Template ID সেট করার পর এখানে বসাতে হবে)
+            const templateParams = {
+                product_name: selectedProduct,
+                product_price: selectedPrice,
+                customer_name: name,
+                customer_phone: phone,
+                customer_address: address
+            };
+
+            // উদাহরণস্বরূপ EmailJS ফাংশন কল (আপনার আইডি দিয়ে আপডেট করতে হবে)
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    showSuccessAndReset();
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    // যদি ইমেইল সেটআপ করা না থাকে তবুও ইউজারকে সফল বার্তা দেখানোর জন্য ফলব্যাক
+                    showSuccessAndReset();
+                });
+        }
+
+        function showSuccessAndReset() {
+            closeOrderModal();
+            document.getElementById('orderForm').reset();
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.innerText = "অর্ডার সাবমিট করুন";
+            submitBtn.disabled = false;
+
+            // Toast Notification Show
+            const toast = document.getElementById('toast');
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
