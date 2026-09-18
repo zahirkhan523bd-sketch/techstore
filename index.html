@@ -3,17 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechStore BD - ল্যাপটপ ও কম্পিউটার পার্টস</title>
-    <!-- Tailwind CSS for modern styling -->
+    <title>TechStore BD - অনলাইন শপ</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- EmailJS SDK -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function() {
-            // EmailJS Public Key (আপনার অ্যাকাউন্ট খোলার পর এখানে আপনার পাবলিক কি বসাবেন)
-            emailjs.init("YOUR_EMAILJS_PUBLIC_KEY");
-        })();
-    </script>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Hind Siliguri', sans-serif; }
@@ -21,129 +12,253 @@
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-    <!-- Header / Navbar -->
+    <!-- Navbar -->
     <header class="bg-blue-600 text-white shadow-md sticky top-0 z-40">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <h1 class="text-2xl font-bold tracking-wide">💻 TechStore BD</h1>
-            <p class="text-sm bg-blue-700 px-3 py-1 rounded-full hidden sm:block">ল্যাপটপ, কম্পিউটার ও পার্টসের বিশ্বস্ত ঠিকানা</p>
+            <div class="flex items-center gap-3">
+                <button onclick="switchTab('shop')" id="shopNavBtn" class="bg-blue-700 px-3 py-1.5 rounded text-sm font-medium transition">শপ সাইট</button>
+                <button onclick="checkAdminAccess()" id="adminNavBtn" class="bg-blue-800 hover:bg-blue-900 px-3 py-1.5 rounded text-sm font-medium transition">অ্যাডমিন প্যানেল</button>
+            </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="bg-blue-900 text-white py-12 px-4 text-center">
-        <div class="container mx-auto max-w-2xl">
-            <h2 class="text-3xl font-bold mb-3">সেরা মূল্যে ল্যাপটপ ও কম্পিউটার পার্টস কিনুন</h2>
-            <p class="text-gray-300 text-sm sm:text-base">পছন্দের পণ্যটি বেছে নিন এবং অর্ডার করুন। আমরা দ্রুত আপনার সাথে যোগাযোগ করে কনফার্ম করব।</p>
-        </div>
-    </section>
+    <!-- ================= SHOP SECTION ================= -->
+    <div id="shopSection" class="container mx-auto px-4 py-10">
+        <section class="bg-blue-900 text-white py-8 px-4 text-center rounded-xl mb-10 shadow-lg">
+            <h2 class="text-3xl font-bold mb-2">ল্যাপটপ, কম্পিউটার ও পার্টসের বিশ্বস্ত দোকান</h2>
+            <p class="text-gray-300 text-sm">পছন্দের পণ্যটি বেছে নিন এবং অর্ডার করুন।</p>
+        </section>
 
-    <!-- Products Grid -->
-    <main class="container mx-auto px-4 py-10">
         <h3 class="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">আমাদের পণ্যসমূহ</h3>
         
-        <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <!-- Product 1 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden border hover:shadow-lg transition">
-                <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500&auto=format&fit=crop&q=60" alt="Laptop" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded font-semibold">ল্যাপটপ</span>
-                    <h4 class="font-bold text-lg mt-2 text-gray-900">HP Core i5 11th Gen Laptop</h4>
-                    <p class="text-gray-600 text-sm mt-1">৮ জিবি র‍্যাম, ৫১২ জিবি এনভিএমই এসএসডি।</p>
-                    <div class="flex justify-between items-center mt-4">
-                        <span class="text-blue-600 font-bold text-lg">৳ ৫৫,০০০</span>
-                        <button onclick="openOrderModal('HP Core i5 11th Gen Laptop', '৳ ৫৫,০০০')" class="bg-blue-600 text-white px-3 py-2 rounded text-sm hover:bg-blue-700 font-medium transition">অর্ডার করুন</button>
-                    </div>
-                </div>
+        <div id="productList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <p class="text-gray-500 col-span-full text-center py-10">প্রণ্য লোড হচ্ছে...</p>
+        </div>
+    </div>
+
+    <!-- ================= ADMIN SECTION ================= -->
+    <div id="adminSection" class="container mx-auto px-4 py-10 hidden">
+        <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-md p-6 border">
+            <div class="flex justify-between items-center border-b pb-4 mb-6">
+                <h3 class="text-2xl font-bold text-gray-900">🛠️ অ্যাডমিন ড্যাশবোর্ড</h3>
+                <button onclick="switchTab('shop')" class="text-sm bg-gray-200 hover:bg-gray-300 px-3 py-1.5 rounded font-medium">শপে ফিরে যান</button>
             </div>
 
-            <!-- Product 2 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden border hover:shadow-lg transition">
-                <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500&auto=format&fit=crop&q=60" alt="Graphics Card" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded font-semibold">পার্টস</span>
-                    <h4 class="font-bold text-lg mt-2 text-gray-900">NVIDIA RTX 3060 12GB GPU</h4>
-                    <p class="text-gray-600 text-sm mt-1">গেমিং ও গ্রাফিক্স ডিজাইনের জন্য সেরা পারফরম্যান্স।</p>
-                    <div class="flex justify-between items-center mt-4">
-                        <span class="text-blue-600 font-bold text-lg">৳ ৩২,৫০০</span>
-                        <button onclick="openOrderModal('NVIDIA RTX 3060 12GB GPU', '৳ ৩২,৫০০')" class="bg-blue-600 text-white px-3 py-2 rounded text-sm hover:bg-blue-700 font-medium transition">অর্ডার করুন</button>
-                    </div>
-                </div>
+            <div class="flex gap-4 mb-6 border-b pb-3">
+                <button onclick="switchAdminTab('addProduct')" id="tabAddProduct" class="font-bold text-blue-600 border-b-2 border-blue-600 pb-1">নতুন প্রডাক্ট অ্যাড করুন</button>
+                <button onclick="switchAdminTab('viewOrders')" id="tabViewOrders" class="font-medium text-gray-600 pb-1">কাস্টমার অর্ডার চেক</button>
             </div>
 
-            <!-- Product 3 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden border hover:shadow-lg transition">
-                <img src="https://images.unsplash.com/photo-1547082299-de196ea013d6?w=500&auto=format&fit=crop&q=60" alt="SSD" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded font-semibold">স্টোরেজ</span>
-                    <h4 class="font-bold text-lg mt-2 text-gray-900">Samsung 980 1TB NVMe SSD</h4>
-                    <p class="text-gray-600 text-sm mt-1">দ্রুতগতির রিড ও রাইট স্পিড, ৩ বছরের ওয়ারেন্টি।</p>
-                    <div class="flex justify-between items-center mt-4">
-                        <span class="text-blue-600 font-bold text-lg">৳ ৮,,৫০০</span>
-                        <button onclick="openOrderModal('Samsung 980 1TB NVMe SSD', '৳ ৮,৫০০')" class="bg-blue-600 text-white px-3 py-2 rounded text-sm hover:bg-blue-700 font-medium transition">অর্ডার করুন</button>
+            <!-- Add Product Form -->
+            <div id="addProductPanel">
+                <form id="productForm" onsubmit="handleProductSubmit(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">প্রডাক্টের নাম</label>
+                        <input type="text" id="pName" required class="w-full border rounded px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500" placeholder="যেমন: HP Core i5 Laptop">
                     </div>
-                </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">মূল্য (টাকা)</label>
+                            <input type="text" id="pPrice" required class="w-full border rounded px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500" placeholder="যেমন: ৳ ৫৫,০০০">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">ক্যাটাগরি</label>
+                            <select id="pCategory" class="w-full border rounded px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="ল্যাপটপ">ল্যাপটপ</option>
+                                <option value="পার্টস">পার্টস</option>
+                                <option value="স্টোরেজ">স্টোরেজ</option>
+                                <option value="ইলেকট্রিক/অ্যাক্সেসরিজ">ইলেকট্রিক/অ্যাক্সেসরিজ</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">সংক্ষিপ্ত বিবরণ</label>
+                        <textarea id="pDesc" rows="2" required class="w-full border rounded px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500" placeholder="স্পেসিফিকেশন লিখুন..."></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">প্রডাক্টের ছবি (গুগল ড্রাইভে সেভ হবে)</label>
+                        <input type="file" id="pImage" accept="image/*" required class="w-full border rounded px-3 py-2 text-sm bg-gray-50">
+                    </div>
+                    <button type="submit" id="saveProductBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded font-semibold transition">প্রডাক্ট পাবলিশ করুন</button>
+                </form>
             </div>
 
-            <!-- Product 4 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden border hover:shadow-lg transition">
-                <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=500&auto=format&fit=crop&q=60" alt="Gaming Keyboard" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded font-semibold">ইলেকট্রিক/অ্যাক্সেসরিজ</span>
-                    <h4 class="font-bold text-lg mt-2 text-gray-900">RGB Mechanical Gaming Keyboard</h4>
-                    <p class="text-gray-600 text-sm mt-1">মেকানিক্যাল ব্লু সুইচ ও দুর্দান্ত আরজিবি লাইটিং।</p>
-                    <div class="flex justify-between items-center mt-4">
-                        <span class="text-blue-600 font-bold text-lg">৳ ২,৮০০</span>
-                        <button onclick="openOrderModal('RGB Mechanical Gaming Keyboard', '৳ ২,৮০০')" class="bg-blue-600 text-white px-3 py-2 rounded text-sm hover:bg-blue-700 font-medium transition">অর্ডার করুন</button>
-                    </div>
+            <!-- View Orders Panel -->
+            <div id="viewOrdersPanel" class="hidden">
+                <h4 class="font-bold text-lg mb-4 text-gray-800">কাস্টমারদের অর্ডার তালিকা</h4>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-gray-100 text-sm text-gray-700 border-b">
+                                <th class="p-3">তারিখ</th>
+                                <th class="p-3">নাম</th>
+                                <th class="p-3">ফোন নম্বর</th>
+                                <th class="p-3">পণ্য</th>
+                                <th class="p-3">ঠিকানা</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersTableBody" class="text-sm">
+                            <tr><td colspan="5" class="p-4 text-center text-gray-500">ডাটা লোড হচ্ছে...</td></tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 
-    <!-- Order Modal (Popup) -->
+    <!-- Order Modal -->
     <div id="orderModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex justify-center items-center z-50 p-4">
         <div class="bg-white rounded-lg max-w-md w-full p-6 shadow-xl relative">
             <button onclick="closeOrderModal()" class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-xl font-bold">&times;</button>
             <h3 class="text-xl font-bold text-gray-800 mb-2">অর্ডার কনফার্ম করুন</h3>
             <p id="modalProductName" class="text-sm text-blue-600 font-semibold mb-4"></p>
-
-            <form id="orderForm" onsubmit="submitOrder(event)">
-                <div class="mb-3">
+            <form id="orderForm" onsubmit="submitOrder(event)" class="space-y-3">
+                <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">আপনার নাম</label>
-                    <input type="text" id="customerName" required class="w-full border rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="পূর্ণ নাম লিখুন">
+                    <input type="text" id="custName" required class="w-full border rounded px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                <div class="mb-3">
+                <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">মোবাইল নম্বর</label>
-                    <input type="tel" id="customerPhone" required class="w-full border rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="০১৭xxxxxxxx">
+                    <input type="tel" id="custPhone" required class="w-full border rounded px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500" placeholder="০১৭xxxxxxxx">
                 </div>
-                <div class="mb-4">
+                <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">পূর্ণ ঠিকানা</label>
-                    <textarea id="customerAddress" required rows="3" class="w-full border rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="বাসা/রোড, থানা, জেলা"></textarea>
+                    <textarea id="custAddress" required rows="3" class="w-full border rounded px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500" placeholder="বাসা, রোড, থানা, জেলা"></textarea>
                 </div>
-                <button type="submit" id="submitBtn" class="w-full bg-blue-600 text-white py-2.5 rounded font-semibold hover:bg-blue-700 transition">অর্ডার সাবমিট করুন</button>
+                <button type="submit" id="orderSubmitBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded font-semibold transition">অর্ডার কনফার্ম করুন</button>
             </form>
         </div>
     </div>
 
-    <!-- Success Message Toast -->
-    <div id="toast" class="fixed bottom-5 right-5 bg-green-600 text-white px-4 py-3 rounded shadow-lg hidden z-50">
-        ✅ আপনার অর্ডারটি সফলভাবে সাবমিট হয়েছে! আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।
-    </div>
+    <!-- Toast -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-green-600 text-white px-4 py-3 rounded shadow-lg hidden z-50 text-sm"></div>
 
-    <!-- Footer -->
     <footer class="bg-gray-800 text-white text-center py-6 mt-12 text-sm">
         <p>&copy; 2026 TechStore BD. সর্বস্বত্ব সংরক্ষিত।</p>
     </footer>
 
-    <!-- JavaScript logic -->
+    <!-- JavaScript -->
     <script>
-        let selectedProduct = "";
-        let selectedPrice = "";
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwkTaZjc1G2RwwqohNJe3F2jTnyxRUq5cFh7ybb7tYoS3OnPB_vfeL2IbZ1otfr2UUZBA/exec";
 
-        function openOrderModal(product, price) {
-            selectedProduct = product;
-            selectedPrice = price;
-            document.getElementById('modalProductName').innerText = product + " (" + price + ")";
+        let selectedProductData = {};
+
+        function switchTab(tab) {
+            if(tab === 'shop') {
+                document.getElementById('shopSection').classList.remove('hidden');
+                document.getElementById('adminSection').classList.add('hidden');
+                fetchProducts();
+            } else {
+                document.getElementById('shopSection').classList.add('hidden');
+                document.getElementById('adminSection').classList.remove('hidden');
+                fetchOrders();
+            }
+        }
+
+        function checkAdminAccess() {
+            let pass = prompt("অ্যাডমিন প্যানেলে প্রবেশ করতে পাসওয়ার্ড দিন:");
+            if(pass === "1234") {
+                switchTab('admin');
+            } else if(pass !== null) {
+                alert("ভুল পাসওয়ার্ড!");
+            }
+        }
+
+        function switchAdminTab(subTab) {
+            if(subTab === 'addProduct') {
+                document.getElementById('addProductPanel').classList.remove('hidden');
+                document.getElementById('viewOrdersPanel').classList.add('hidden');
+                document.getElementById('tabAddProduct').className = "font-bold text-blue-600 border-b-2 border-blue-600 pb-1";
+                document.getElementById('tabViewOrders').className = "font-medium text-gray-600 pb-1";
+            } else {
+                document.getElementById('addProductPanel').classList.add('hidden');
+                document.getElementById('viewOrdersPanel').classList.remove('hidden');
+                document.getElementById('tabViewOrders').className = "font-bold text-blue-600 border-b-2 border-blue-600 pb-1";
+                document.getElementById('tabAddProduct').className = "font-medium text-gray-600 pb-1";
+                fetchOrders();
+            }
+        }
+
+        function fetchProducts() {
+            fetch(SCRIPT_URL + "?action=getProducts")
+                .then(res => res.json())
+                .then(data => {
+                    let html = "";
+                    if(data.length === 0) {
+                        html = `<p class="text-gray-500 col-span-full text-center py-10">কোনো প্রডাক্ট পাওয়া যায়নি। অ্যাডমিন প্যানেল থেকে প্রডাক্ট অ্যাড করুন।</p>`;
+                    } else {
+                        data.forEach(p => {
+                            html += `
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden border hover:shadow-lg transition">
+                                    <img src="${p.image}" alt="${p.name}" class="w-full h-48 object-cover">
+                                    <div class="p-4">
+                                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded font-semibold">${p.category}</span>
+                                        <h4 class="font-bold text-lg mt-2 text-gray-900">${p.name}</h4>
+                                        <p class="text-gray-600 text-sm mt-1">${p.desc}</p>
+                                        <div class="flex justify-between items-center mt-4">
+                                            <span class="text-blue-600 font-bold text-lg">${p.price}</span>
+                                            <button onclick='openOrderModal(${JSON.stringify(p)})' class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded text-sm font-medium transition">অর্ডার করুন</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        });
+                    }
+                    document.getElementById('productList').innerHTML = html;
+                })
+                .catch(err => {
+                    document.getElementById('productList').innerHTML = `<p class="text-red-500 col-span-full text-center py-10">প্রডাক্ট লোড করতে সমস্যা হয়েছে। SCRIPT_URL চেক করুন।</p>`;
+                });
+        }
+
+        function handleProductSubmit(e) {
+            e.preventDefault();
+            const btn = document.getElementById('saveProductBtn');
+            btn.innerText = "গুগল ড্রাইভে আপলোড হচ্ছে...";
+            btn.disabled = true;
+
+            const fileInput = document.getElementById('pImage');
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(event) {
+                const base64Image = event.target.result.split(',')[1];
+                const productData = {
+                    action: "addProduct",
+                    name: document.getElementById('pName').value,
+                    price: document.getElementById('pPrice').value,
+                    category: document.getElementById('pCategory').value,
+                    desc: document.getElementById('pDesc').value,
+                    image: base64Image,
+                    mimeType: file.type,
+                    fileName: file.name
+                };
+
+                fetch(SCRIPT_URL, {
+                    method: "POST",
+                    body: JSON.stringify(productData)
+                })
+                .then(res => res.json())
+                .then(res => {
+                    showToast("✅ সফলভাবে প্রডাক্ট এবং ইমেজ গুগল ড্রাইভে সেভ হয়েছে!");
+                    document.getElementById('productForm').reset();
+                    btn.innerText = "প্রডাক্ট পাবলিশ করুন";
+                    btn.disabled = false;
+                    fetchProducts();
+                })
+                .catch(err => {
+                    alert("ত্রুটি হয়েছে: " + err);
+                    btn.innerText = "প্রডাক্ট পাবলিশ করুন";
+                    btn.disabled = false;
+                });
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function openOrderModal(product) {
+            selectedProductData = product;
+            document.getElementById('modalProductName').innerText = product.name + " (" + product.price + ")";
             document.getElementById('orderModal').classList.remove('hidden');
         }
 
@@ -151,52 +266,73 @@
             document.getElementById('orderModal').classList.add('hidden');
         }
 
-        function submitOrder(event) {
-            event.preventDefault();
-            
-            const name = document.getElementById('customerName').value;
-            const phone = document.getElementById('customerPhone').value;
-            const address = document.getElementById('customerAddress').value;
-            const submitBtn = document.getElementById('submitBtn');
+        function submitOrder(e) {
+            e.preventDefault();
+            const btn = document.getElementById('orderSubmitBtn');
+            btn.innerText = "অর্ডার সাবমিট হচ্ছে...";
+            btn.disabled = true;
 
-            submitBtn.innerText = "পাঠানো হচ্ছে...";
-            submitBtn.disabled = true;
-
-            // EmailJS এর মাধ্যমে ইমেইল পাঠানোর প্যারামিটার
-            // (Note: EmailJS ড্যাশবোর্ডে Service ID এবং Template ID সেট করার পর এখানে বসাতে হবে)
-            const templateParams = {
-                product_name: selectedProduct,
-                product_price: selectedPrice,
-                customer_name: name,
-                customer_phone: phone,
-                customer_address: address
+            const orderData = {
+                action: "addOrder",
+                productName: selectedProductData.name,
+                productPrice: selectedProductData.price,
+                customerName: document.getElementById('custName').value,
+                customerPhone: document.getElementById('custPhone').value,
+                customerAddress: document.getElementById('custAddress').value
             };
 
-            // উদাহরণস্বরূপ EmailJS ফাংশন কল (আপনার আইডি দিয়ে আপডেট করতে হবে)
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
-                .then(function(response) {
-                    console.log('SUCCESS!', response.status, response.text);
-                    showSuccessAndReset();
-                }, function(error) {
-                    console.log('FAILED...', error);
-                    // যদি ইমেইল সেটআপ করা না থাকে তবুও ইউজারকে সফল বার্তা দেখানোর জন্য ফলব্যাক
-                    showSuccessAndReset();
+            fetch(SCRIPT_URL, {
+                method: "POST",
+                body: JSON.stringify(orderData)
+            })
+            .then(res => res.json())
+            .then(res => {
+                closeOrderModal();
+                document.getElementById('orderForm').reset();
+                btn.innerText = "অর্ডার কনফার্ম করুন";
+                btn.disabled = false;
+                showToast("✅ আপনার অর্ডার সফলভাবে সাবমিট হয়েছে!");
+            })
+            .catch(err => {
+                alert("ত্রুটি হয়েছে।");
+                btn.innerText = "অর্ডার কনফার্ম করুন";
+                btn.disabled = false;
+            });
+        }
+
+        function fetchOrders() {
+            fetch(SCRIPT_URL + "?action=getOrders")
+                .then(res => res.json())
+                .then(data => {
+                    let html = "";
+                    if(data.length === 0) {
+                        html = `<tr><td colspan="5" class="p-4 text-center text-gray-500">কোনো নতুন অর্ডার নেই।</td></tr>`;
+                    } else {
+                        data.reverse().forEach(o => {
+                            html += `
+                                <tr class="border-b hover:bg-gray-50">
+                                    <td class="p-3 text-gray-500">${o.date || ''}</td>
+                                    <td class="p-3 font-semibold">${o.name}</td>
+                                    <td class="p-3 text-blue-600 font-bold">${o.phone}</td>
+                                    <td class="p-3">${o.product}</td>
+                                    <td class="p-3 text-gray-600">${o.address}</td>
+                                </tr>
+                            `;
+                        });
+                    }
+                    document.getElementById('ordersTableBody').innerHTML = html;
                 });
         }
 
-        function showSuccessAndReset() {
-            closeOrderModal();
-            document.getElementById('orderForm').reset();
-            const submitBtn = document.getElementById('submitBtn');
-            submitBtn.innerText = "অর্ডার সাবমিট করুন";
-            submitBtn.disabled = false;
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.innerText = msg;
+            t.classList.remove('hidden');
+            setTimeout(() => t.classList.add('hidden'), 4000);
+        }
 
-            // Toast Notification Show
-            const toast = document.getElementById('toast');
-            toast.classList.remove('hidden');
-            setTimeout(() => {
-                toast.classList.add('hidden');
-            }, 4000);
+        window.onload = function() {
+            fetchProducts();
         }
     </script>
 </body>
